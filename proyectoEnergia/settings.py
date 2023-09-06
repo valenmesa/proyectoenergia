@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-by13$l=17ri9pgsx$cbkbukw3cf-r)*!345@sq**j3b41z1=-z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['proyectoenergia.onrender.com']
+ALLOWED_HOSTS = ['proyectoenergia.onrender.com',
+'127.0.0.1'
+]
 
 
 # Application definition
@@ -130,7 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'proyectoEnergia/static'),)
 LOGIN_REDIRECT_URL = reverse_lazy('profesor_listar')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
