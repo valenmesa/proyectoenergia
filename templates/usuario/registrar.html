@@ -41,6 +41,8 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <link
       href="https://preview.keenthemes.com/metronic8/demo1/assets/css/style.bundle.css"
       rel="stylesheet"
@@ -62,22 +64,31 @@
     </script>
     <!--End::Google Tag Manager -->
   </head>
-  <body style="background-color: #ffffff">
-    <div class="row">
-    <div class="col-3">
-    </div>
-    <div class="col-6">
-      <form method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="{% url 'login' %}" class="btn btn-success">
-          <span class="fa fa-undo">Cancelar</span>
-        </a>
-      </form>
-    </div>
+  <body style="background-color: #00774f">
+    <div class="container">
+      <div class="row justify-content-center my-4">
+        <div class="col-6">
+          <form method="post" class="p-4 rounded" style="background-color:#9ce9de">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center">
+              <button class="btn" type="submit">
+                <span class="fa fa-save" style="font-size: 20px; color: #00CE23;"></span>
+              </button>
+              <button type="button" class="btn" onclick="return cerrar_modal()">
+                <i class="fa fa-ban fa-solid" style="font-size: 20px; color: red;"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
-  </html>
+  
+  
+  
+{% comment %}   style="background-color: blue"
+ {% endcomment %}  </html>
 
   {% comment %}
   <div class="modal-dialog">
