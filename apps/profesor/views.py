@@ -62,6 +62,6 @@ def ProfesorInactivar(request, id):
         prv.estado=False
         prv.save()
         contexto={'obj': 'OK'}
-        return HttpResponse("Profesor Inactivado")
+        # return HttpResponse("Profesor Inactivado")
 
     return render(request, template_name, contexto)
