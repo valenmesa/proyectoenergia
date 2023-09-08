@@ -19,6 +19,7 @@
             <td>Dirección</td>
             <td>Tipo documento</td>
             <td>Numero documento</td>
+            <td>Estado</td>
             <td>Acciones</td>
         </tr>
     </thead>
@@ -34,12 +35,13 @@
             <td>{{cliente.direccion_cliente}}</td>
             <td>{{cliente.tipo_documento.descripcion}}</td>
             <td>{{cliente.numero_documento}}</td>
+            <td>{{cliente.estado|yesno:"Activo, Inactivo"}}</td>
 
             <td>
 
                 <a  onclick="return abrir_modal('{%url 'cliente_editar' cliente.id %}')" href="#"
                 role="button"><i class="fa fa-edit" style="font-size: 20px; color: #FF7631"></i></a>
-                <a  href="{%url 'cliente_eliminar' cliente.id %}"
+                <a  href="{%url 'cliente_inactivar' cliente.id %}"
                 role="button"><i class="fas fa-power-off" style="font-size: 20px; color: red"></i></a>
 
             </td>
