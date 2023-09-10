@@ -44,6 +44,10 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/datatables/dataTables.bootstrap4.min.css' %}">
 
 		<link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/datatables/jquery.dataTables.min.css' %}">
+		
+		{% comment %} datapicker {% endcomment %}
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
 
         <!--end::Global Stylesheets Bundle-->
 		<!--Begin::Google Tag Manager -->
@@ -150,7 +154,7 @@
 										<span >
 											<a class="menu-link" href="{% url 'pedido_listar'%}">
 											<span class="menu-bullet">
-												<span class="fas fa-power-off text-success"></span>
+												<span class="fa-regular fa-cart-shopping text-success"></span>
 											</span>
 											<span class="menu-title tamanito">Pedido</span>
 											</a>
@@ -4235,7 +4239,7 @@
         <script src="{% static  'assets/js/custom/utilities/modals/users-.js' %}"></script>
 
 		{% comment %} datatable {% endcomment %}
-
+		
 		<script src="{% static 'assets/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
 
 		<script src="{% static 'assets/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
@@ -4245,12 +4249,23 @@
 		<script src="{% static 'assets/vendor/datatables/jquery.dataTables.min.js' %}"></script>
 
 		<script src="{% static 'assets/vendor/datatables/jquery.easing.min.js' %}"></script>
+		
+		{% comment %} datapicker {% endcomment %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
 		{% comment %} <script src="{% static 'assets/vendor/datatables/jquery.min.js' %}"></script> {% endcomment %}
 
 		{% comment %} <script src="{% static 'assets/vendor/datatables/jquery.slim.min.js' %}"></script> {% endcomment %}
 
 		{% block js_page %} {% endblock %}
+		{% block scripts_local %}
+		
+		<script>
+	$(document).ready(function () {
+		  jQuery.datetimepicker.setLocale('es');
+	});
+  </script>
+	   {% endblock scripts_local %}
 
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->

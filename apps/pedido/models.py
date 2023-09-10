@@ -38,7 +38,7 @@ class Compras(models.Model):
 
     
     def __str__(self):
-        return'{}'.fomat(self.servicio)
+        return'{}'.fomat(self.servicios)
     
     def save(self):
         self.sub_total=float(float(int(self.cantidad))*float(self.precio_prv))

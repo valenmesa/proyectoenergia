@@ -34,7 +34,7 @@ def pedidos(request, compra_id=None):
 
 
             # fecha_compra=datetime.strptime(ped.fecha_compra, '%Y-%m-%d').strftime('%m/%d/%Y')
-            fecha_factura=datetime.strptime(ped.fecha_factura, '%Y-%m-%d').strftime('%m/%d/%Y')
+            # fecha_factura=datetime.strptime(ped.fecha_factura, '%Y-%m-%d').strftime('%m/%d/%Y')
             e = {
                 'fecha_factura': fecha_factura,
                 'cliente':ped.Cliente,

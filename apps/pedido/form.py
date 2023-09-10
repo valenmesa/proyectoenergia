@@ -2,6 +2,7 @@ from django import forms
 from .models import Compras, Pedido
 
 class PedidoForm(forms.ModelForm):
+    fecha_factura=forms.DateInput()
     class Meta:
         model = Pedido
         fields = [
