@@ -44,10 +44,23 @@ class ClienteEdit(LoginRequiredMixin, generic.UpdateView):
         form.instance.um=self.request.user.id
         return super().form_valid(form)
 
-# Eliminar registro
-class ClienteDelete(LoginRequiredMixin, generic.DeleteView):
-    model=Cliente
-    template_name='cliente/cliente_delete.html'
-    success_url= reverse_lazy('cliente_listar')
-    context_object_name="obj"
+# Inactivar registro
 
+def ClienteInactivar(request, id):
+    template_name="cliente/cliente_inactivar.html"
+    contexto={}
+    prv=Cliente.objects.filter(pk=id).first()
+    
+    if not prv:
+        return HttpResponse("Cliente no existe" + str(id))
+    
+    if request.method=='GET':
+        contexto={'obj': prv}
+    
+    if request.method=='POST':
+        prv.estado=False
+        prv.save()
+        contexto={'obj': 'OK'}
+        return HttpResponse("Cliente Inactivado")
+
+    return render(request, template_name, contexto)

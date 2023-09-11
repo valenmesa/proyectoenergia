@@ -1,60 +1,51 @@
 {% extends 'base/base.html' %}
 
 {%block content%}
-<h1>Cliente</h1>
 
+<h1>Listado de Compras</h1>
 
-    <a class="btn" onclick="return abrir_modal('{%url 'cliente_crear' %}')" href="#"
-    role="button"><i class="fa fa-plus-square" style="font-size: 30px; color: #00590F " ></i></a>
+    <a class="btn"  href="{% url 'pedido_crear' %}"><i class="fa fa-plus-square"  style="font-size: 30px; color: #00590F "></i></a>
 </div>
-
 <table class="table table-striped">
     <thead>
         <tr>
             <td>#</td>
-            <td>Nombre</td>
-            <td>Apellido</td>
-            <td>Teléfono</td>
-            <td>Email</td>
-            <td>Dirección</td>
-            <td>Tipo documento</td>
-            <td>Numero documento</td>
+            <td>Fecha</td>
+            <td>Obervación</td>
+            <td>Sub Total</td>
+            <td>Iva</td>
+            <td>Total</td>
             <td>Estado</td>
             <td>Acciones</td>
         </tr>
     </thead>
     <tbody>
-        {% if object_list %}
-        {% for cliente in object_list%}
+        {% if obj %}
+        {% for item in obj %}
         <tr>
-            <td>{{cliente.id}}</td>
-            <td>{{cliente.nombre_cliente}}</td>
-            <td>{{cliente.apellido_cliente}}</td>
-            <td>{{cliente.telefono_cliente}}</td>
-            <td>{{cliente.email_cliente}}</td>
-            <td>{{cliente.direccion_cliente}}</td>
-            <td>{{cliente.tipo_documento.descripcion}}</td>
-            <td>{{cliente.numero_documento}}</td>
-            <td>{{cliente.estado|yesno:"Activo, Inactivo"}}</td>
-
+            <td>{{ item.id}}</td>
+            <td>{{ item.fecha_factura}}</td>
+            <td>{{ item.observacion}}</td>
+            <td>{{ item.iva}}</td>
+            <td>{{ item.total_compra}}</td>
+            <td>{{ item.estado_pedido|yesno:"Activo, Inactivo"}}</td>
             <td>
 
-                <a  onclick="return abrir_modal('{%url 'cliente_editar' cliente.id %}')" href="#"
+                <a  href="{%url 'pediido:pedido_editar' item.id %}"
                 role="button"><i class="fa fa-edit" style="font-size: 20px; color: #FF7631"></i></a>
-                <a  href="{%url 'cliente_inactivar' cliente.id %}"
-                role="button"><i class="fas fa-power-off" style="font-size: 20px; color: red"></i></a>
+                <a href="#"
+                role="button"><i class="fas fa-power-off" style="font-size: 20px; color:red"></i></a>
 
             </td>
-
-            {% endfor%}
+        {% endfor%}
             {% else %}
-            <h1>No hay registros de clientes</h1>
+            <h1>No hay registros de compras</h1>
             {% endif %}
         </tr>
     </tbody>
 </table>
 
-{% comment %} <a class="btn btn-success" href="{%url 'cliente_crear' %}">Agregar</a> {% endcomment %}
+{% comment %} <a class="btn btn-success" href="{%url 'profesor_crear' %}">Agregar</a> {% endcomment %}
 
 {% endblock %}
 

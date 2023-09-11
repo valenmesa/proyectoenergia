@@ -27,18 +27,13 @@ class ProfesorForm (forms.ModelForm):
         widgets={
             'nombre_profesor': forms.TextInput(attrs={'class':'form-control'}),
             'apellido_profesor': forms.TextInput(attrs={'class':'form-control'}),
-            'telefono_profesor': forms.TextInput(attrs={'class':'form-control'}),
+            'telefono_profesor': forms.NumberInput(attrs={'class':'form-control'}),
             'email_profesor': forms.TextInput(attrs={'class':'form-control'}),
             'direccion_profesor': forms.TextInput(attrs={'class':'form-control'}),
             'tipo_documento': forms.Select(attrs={'class':'form-control'}),
-            'numero_documento': forms.TextInput(attrs={'class':'form-control'}),
+            'numero_documento': forms.NumberInput(attrs={'class':'form-control'}),
         }
-    # def __init__(self, *args, **Kwargs):
-    #     super().__init__(*args, **Kwargs)
-    #     for field in iter(self.fields):
-    #         self.fields[field].widget.attrs.update({
-    #             'class':'form-control','placeholder':'Nombre'
-    #         })
+
     def __init__(self, *args, **Kwargs):
             super().__init__(*args, **Kwargs)
             for field in iter(self.fields):
