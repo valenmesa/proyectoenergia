@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Pedido, Compras
+from apps.cliente.models import Cliente
+from apps.cliente.form import ClienteForm
 from .form import PedidoForm
 from apps.servicios.models import servicios
 from django.urls import reverse_lazy
@@ -37,7 +39,7 @@ def pedidos(request, compra_id=None):
             # fecha_factura=datetime.strptime(ped.fecha_factura, '%Y-%m-%d').strftime('%m/%d/%Y')
             e = {
                 'fecha_factura': fecha_factura,
-                'cliente':ped.Cliente,
+                'cliente':ped.cliente,
                 'observacion':ped.observacion,
                 'sub_total': ped.sub_total,
                 'iva': ped.iva,
@@ -51,18 +53,18 @@ def pedidos(request, compra_id=None):
     if request.method=='POST':
 
         fecha_factura=request.POST.get("fecha_factura")
-        Cliente=request.POST.get("cliente")
+        cliente=request.POST.get("cliente")
         observacion=request.POST.get("observacion")
         sub_total=0
         iva=0
         total_compra=0
 
         if not compra_id:
-            cliente=Cliente.objects.get(pk=Cliente)
+            cliente=Cliente.objects.get(pk=cliente)
 
             ped= Pedido(
                 fecha_factura=fecha_factura,
-                cliente=Cliente,
+                cliente=cliente,
                 observacion=observacion,
             )
 
