@@ -75,9 +75,15 @@
               <button class="btn" type="submit">
                 <span class="fa fa-save" style="font-size: 20px; color: #00CE23;"></span>
               </button>
-              <button type="button" class="btn" onclick="return cerrar_modal()">
+              <button type="button" class="btn" onclick="cerrar_modal();">
                 <i class="fa fa-ban fa-solid" style="font-size: 20px; color: red;"></i>
               </button>
+              <script>
+                function cerrar_modal() {
+                  // Redirigir a la página de inicio de sesión
+                  window.location.href = "{% url 'estado_listar' %}";
+                }
+              </script>
             </div>
           </form>
         </div>
