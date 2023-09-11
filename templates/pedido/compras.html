@@ -67,8 +67,8 @@
               {% for item in servicios %}
               <tr>
                 <td>{{item.id}}</td>
-                <td>{{item.descripcion}}</td>
-                <td>{{item.precio}}</td>
+                <td>{{item.Descripcion_Servicio}}</td>
+                <td>{{item.Valor_Servicio}}</td>
                 <td>
                   <button type="button" class="btn btn-warning btn-circle" onclick="selectServicios({{item.id}}, '{{item.descripcion}}', {{item.precio}})">
                     <i class="far fa-hand-pointer"></i>

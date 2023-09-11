@@ -46,7 +46,7 @@ def pedidos(request, compra_id=None):
             form_pedido=PedidoForm(e)
         else:
             det=None
-        contexto={'pedido': ped, 'compras':det, 'form_ped':form_pedido}
+        contexto={'servicios':servicios_list, 'pedido': ped, 'compras':det, 'form_ped':form_pedido}
 
     if request.method=='POST':
 
