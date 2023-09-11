@@ -70,7 +70,7 @@
                 <td>{{item.Descripcion_Servicio}}</td>
                 <td>{{item.Valor_Servicio}}</td>
                 <td>
-                  <button type="button" class="btn btn-warning btn-circle" onclick="selectServicios({{item.id}}, '{{item.descripcion}}', {{item.precio}})">
+                  <button type="button" class="btn btn-warning btn-circle" onclick="selectServicios({{item.id}}, '{{item.Descripcion_Servicio}}', {{item.Valor_Servicio}})">
                     <i class="far fa-hand-pointer"></i>
                   </button>
                 </td>
@@ -278,7 +278,7 @@
 
               /*Validar envío de compras*/
               $("#frmCompras").submit(function(e){
-                if($('#id_total_compra_compras').val()==0 || $('#id_id_servicios').val()==0){
+                if($('#id_total_compra_compras').val()==0 || $('#id_servicios').val()==0){
                   e.preventDefault();
                   $.alert({
                     type:'red',
@@ -327,7 +327,7 @@
                 desc = desc > cant * prec ? 0 : desc;
           
                 stotal = cant * prec;
-                total = stotal - (stotal*(desc/100));
+                total = stotal + (stotal*(desc/100));
                 //total = stotal - desc;
           
                 cant = $("#id_cantidad_compras").val(cant);
@@ -343,14 +343,14 @@
                 $("#id_iva_compras").val(0);
                 $("#id_sub_total_compras").val(0);
                 $("#id_total_compra_compras").val(0);
-                $("#id_id_servicios").val("");
+                $("#id_servicios").val("");
             
                 $("#id_descripcion_servicios").val("");
                 $(`.table`).DataTable().search("").draw();
-                $("#id_proveedor").focus();
+                $("#id_cliente").focus();
               }
             
-              $("#id_proveedor").focus();
+              $("#id_cliente").focus();
         
     </script>    
 {% endblock %}
