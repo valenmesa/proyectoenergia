@@ -13,7 +13,7 @@
       <!-- Inicio pedido -->
       <div class="form-group row">
         <label for="" class="col-sm-2 col-form-label">Cliente </label>
-        <div class="col-sm-10">{{form_ped.nombre_cliente}}</div>
+        <div class="col-sm-10">{{form_ped.cliente}}</div>
       </div>
       <div class="row">
         <div class="col-6">
@@ -216,15 +216,15 @@
           <tbody>
             {%for item in compras %}
             <tr>
-              <td>{{ item.servicios}}</td>
+              <td>{{ item.servicios_id}}</td>
               <td>{{ item.cantidad}}</td>
               <td>{{ item.precio_prv}}</td>
               <td>{{ item.sub_total}}</td>
               <td>{{ item.iva}}</td>
-              <td>{{ item.total}}</td>
+              <td>{{ item.total_compra}}</td>
               <td>
                 <button class="btn btn-danger btn-circle"
-                onclick="return abrir_modal('{%url 'pedido:compras_del' pedido.pk item.id%}')">
+                onclick="return abrir_modal('{%url 'compras_del' pedido.pk item.id%}')">
                  <i class="fas fa-trash-alt"></i>
                </button>
               </td>

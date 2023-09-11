@@ -10,7 +10,7 @@ class Pedido(models.Model):
     sub_total=models.FloatField(default=0)
     iva = models.FloatField(default=0)
     total_compra=models.FloatField(default=0)
-    nombre_cliente=models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente=models.ForeignKey(Cliente, on_delete=models.CASCADE)
     estado_pedido = models.ForeignKey(Estado, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
