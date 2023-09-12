@@ -60,11 +60,12 @@ def pedidos(request, compra_id=None):
         total_compra=0
 
         if not compra_id:
-            cliente=Cliente.objects.get(pk=cliente)
+            cli=Cliente.objects.get(pk=cliente)
+            # cli=Cliente.objects.filter(pk=cliente).exists()
 
             ped= Pedido(
                 fecha_factura=fecha_factura,
-                cliente=cliente,
+                cliente=cli,
                 observacion=observacion,
             )
 
@@ -80,14 +81,14 @@ def pedidos(request, compra_id=None):
 
         if not compra_id:
             return redirect("pedido: compras_list")
-        servicio=request.POST.get("id_servicio")
+        servicio=request.POST.get("id_servicios")
         cantidad=request.POST.get("id_cantidad_compras")
         precio=request.POST.get("id_precio_compras")
         sub_total_compras=request.POST.get("id_sub_total_compras")
         iva_compras=request.POST.get("id_iva_compras")
         total_compra_compras=request.POST.get("id_total_compra_compras")
 
-        servicios_list=servicios.objects.get(pk=servicios)
+        servicios_list=servicios.objects.get(pk=servicio)
 
         det=Compras(
             compra=ped,
@@ -104,7 +105,7 @@ def pedidos(request, compra_id=None):
             ped.iva=iva["iva__sum"]
             ped.save()
 
-        return redirect("pedido:pedido_editar", compra_id=compra_id)
+        return redirect("pedido_editar", compra_id=compra_id)
 
     return render(request, template_name, contexto)
 
@@ -115,4 +116,4 @@ class ComprasDelete(LoginRequiredMixin, generic.DeleteView):
     
     def get_success_url(self):
         compra_id=self.kwargs['compra_id']
-        return reverse_lazy('pedido:pedido_editar', kwargs={'compra_id': compra_id})
+        return reverse_lazy("pedido_editar", kwargs={'compra_id': compra_id})

@@ -31,10 +31,10 @@
 									<div class="stepper-item current" data-kt-stepper-element="nav">
 										<!--begin::Line-->
 										<div class="stepper-line w-40px"></div>
-        <form method='post' role="form" class="form-inline" action="{% url 'pedido:compras_del' obj.compra.id obj.pk %}" >
+        <form method='post' role="form" class="form-inline" action="{% url 'compras_del' obj.compra.id obj.pk %}" >
             {% csrf_token %}
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                Eliminar {{ obj.servicios}} de compra número {{ obj.compra.id}}<b></b>
+                Eliminar {{ obj.servicio}} de compra número {{ obj.compra.id}}<b></b>
             </div>
         
             <button class="btn btn-danger"  type="submit" class="btn btn-danger" ;>

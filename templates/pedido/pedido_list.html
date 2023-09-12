@@ -11,7 +11,8 @@
         <tr>
             <td>#</td>
             <td>Fecha</td>
-            <td>Obervación</td>
+            <td>Servicio</td>
+            <td>Observación</td>
             <td>Sub Total</td>
             <td>Iva</td>
             <td>Total</td>
@@ -25,16 +26,19 @@
         <tr>
             <td>{{ item.id}}</td>
             <td>{{ item.fecha_factura}}</td>
+            <td>{{ item.servicios}}</td>
             <td>{{ item.observacion}}</td>
+            <td>{{ item.sub_total}}</td>
             <td>{{ item.iva}}</td>
             <td>{{ item.total_compra}}</td>
             <td>{{ item.estado_pedido|yesno:"Activo, Inactivo"}}</td>
             <td>
 
-                <a  href="{%url 'pediido:pedido_editar' item.id %}"
+                <a  href="{%url 'pedido_editar' item.id %}"
+                {% comment %} <a  href="#" {% endcomment %}
                 role="button"><i class="fa fa-edit" style="font-size: 20px; color: #FF7631"></i></a>
-                <a href="#"
-                role="button"><i class="fas fa-power-off" style="font-size: 20px; color:red"></i></a>
+                {% comment %} <a href="#"
+                role="button"><i class="fas fa-power-off" style="font-size: 20px; color:red"></i></a> {% endcomment %}
 
             </td>
         {% endfor%}
