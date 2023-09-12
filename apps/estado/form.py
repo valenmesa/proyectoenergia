@@ -8,7 +8,7 @@ class EstadoForm (forms.ModelForm):
             'descripcion_estado',
         ]
         labels ={
-            'descripcion_estado': 'Descripcion',
+            'descripcion_estado': 'Descripción',
         }
         widgets={
             'descripcion_estado': forms.TextInput(attrs={'class':'form-control'}),
