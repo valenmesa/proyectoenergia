@@ -14,6 +14,9 @@ class PedidoForm(forms.ModelForm):
             'total_compra',
             'estado_pedido',
         ]
+        widgets = {
+            'fecha_factura': forms.DateInput(format='%Y-%m-%d'),  # Establece el formato de fecha deseado
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
