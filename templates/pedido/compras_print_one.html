@@ -49,7 +49,7 @@
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>SubTotal</th>
-                        <th>Iva</th>
+                        <th>Descuento</th>
                         <th>Total</th>
                     </tr>
                 </thead>
@@ -60,7 +60,7 @@
                         <td class="numero">{{item.cantidad}}</td>
                         <td class="numero">{{item.precio_prv}}</td>
                         <td class="numero">{{item.sub_total}}</td>
-                        <td>{{ item.iva}}</td>
+                        <td>{{ item.descuento}}</td>
                         <td>{{ item.total_compra}}</td>
                     </tr>
                     {% endfor %}
@@ -93,8 +93,8 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><h4>Iva</h4></td>
-                        <td class="numero"><h4>{{encabezado.iva}}</h4></td>
+                        <td><h4>Descuento</h4></td>
+                        <td class="numero"><h4>{{encabezado.descuento}}</h4></td>
                     </tr>
                     <tr>
                         <td></td>

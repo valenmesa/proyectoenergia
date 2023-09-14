@@ -15,9 +15,8 @@
             <td>Fecha</td>
             <td>Observación</td>
             <td>Sub Total</td>
-            <td>Iva</td>
+            <td>Descuento</td>
             <td>Total</td>
-            <td>Estado</td>
             <td>Acciones</td>
         </tr>
     </thead>
@@ -29,9 +28,8 @@
             <td>{{ item.fecha_factura}}</td>
             <td>{{ item.observacion}}</td>
             <td>{{ item.sub_total}}</td>
-            <td>{{ item.iva}}</td>
+            <td>{{ item.descuento}}</td>
             <td>{{ item.total_compra}}</td>
-            <td>{{ item.estado_pedido|yesno:"Activo, Inactivo"}}</td>
             <td>
                 <a  href="{%url 'pedido_editar' item.id %}"
                 {% comment %} <a  href="#" {% endcomment %}

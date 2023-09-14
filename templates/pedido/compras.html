@@ -35,9 +35,9 @@
           </div>
           <div class="row">
             <div class="col">
-              <label for="iva">Iva: </label>
+              <label for="descuento">Descuento: </label>
             </div>
-            <div class="col">{{form_ped.iva}}</div>
+            <div class="col">{{form_ped.descuento}}</div>
           </div>
           <div class="row">
             <div class="col">
@@ -132,15 +132,15 @@
             required
           />
         </div>
-        <label for="id_iva_compras" class="col-sm-3 col-form-label"
-          >% Iva:
+        <label for="id_descuento_compras" class="col-sm-3 col-form-label"
+          >% Descuento:
         </label>
         <div class="col-sm-3">
           <input
             type="number"
             class="form-control"
-            name="id_iva_compras"
-            id="id_iva_compras"
+            name="id_descuento_compras"
+            id="id_descuento_compras"
             value="00"
             required
           />
@@ -209,7 +209,7 @@
             <th>Cantidad</th>
             <th>Precio</th>
             <th>Sub Total</th>
-            <th>Iva</th>
+            <th>Descuento</th>
             <th>Total</th>
             <th class="all">Acciones</th>
           </thead>
@@ -220,7 +220,7 @@
               <td>{{ item.cantidad}}</td>
               <td>{{ item.precio_prv}}</td>
               <td>{{ item.sub_total}}</td>
-              <td>{{ item.iva}}</td>
+              <td>{{ item.descuento}}</td>
               <td>{{ item.total_compra}}</td>
               <td>
                 <button class="btn btn-danger btn-circle"
@@ -271,7 +271,7 @@
                 });
 
                 $(
-                    "#id_cantidad_compras, #id_iva_compras"
+                    "#id_cantidad_compras, #id_descuento_compras"
                   ).change(function () {
                     calcular_compras();
                   });
@@ -297,7 +297,7 @@
               function selectServicios(id, descripcion, valor) {
                 $("#id_cantidad_compras").val(0);
                 $("#id_precio_compras").val(valor);
-                $("#id_iva_compras").val(0);
+                $("#id_descuento_compras").val(0);
                 $("#id_sub_total_compras").val(0);
                 $("#id_total_compra_compras").val(0);
                 $("#id_servicios").val(+id);
@@ -320,19 +320,19 @@
                 prec = prec === "" ? 0 : +prec;
                 prec = prec < 0 ? 0 : prec;
           
-                desc = $("#id_iva_compras").val();
+                desc = $("#id_descuento_compras").val();
                 desc = desc === "" ? 0 : +desc;
                 desc = desc < 0 ? 0 : desc;
           
                 desc = desc > cant * prec ? 0 : desc;
           
                 stotal = cant * prec;
-                total = stotal + (stotal*(desc/100));
+                total = stotal - (stotal*(desc/100));
                 //total = stotal - desc;
           
                 cant = $("#id_cantidad_compras").val(cant);
                 prec = $("#id_precio_compras").val(prec);
-                desc = $("#id_iva_compras").val(desc);
+                desc = $("#id_descuento_compras").val(desc);
                 stotal = $("#id_sub_total_compras").val(stotal);
                 total = $("#id_total_compra_compras").val(total);
               }
@@ -340,7 +340,7 @@
               function clear_detail() {
                 $("#id_cantidad_compras").val(0);
                 $("#id_precio_compras").val(0);
-                $("#id_iva_compras").val(0);
+                $("#id_descuento_compras").val(0);
                 $("#id_sub_total_compras").val(0);
                 $("#id_total_compra_compras").val(0);
                 $("#id_servicios").val("");
