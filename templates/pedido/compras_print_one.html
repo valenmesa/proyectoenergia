@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de compras</title>
+
+    <style type="text/css"> 
+        @page {
+            size:letter;
+            margin:1cm;
+
+        }
+     
+        .table td .numero{
+            text-align:center;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4>Sistema de compras DEBS</h4>
+                <div class="list-group">
+                    <p>No. Compra: {{encabezado.id}}</p>
+                
+                <table class="">
+                    <tbody>
+                        <tr>
+                            <td>Cliente:</td>
+                            <td>{{encabezado.cliente}}</td>
+                            <td>Fecha Factura:</td>
+                            <td>{{encabezado.fecha_factura | date:"d/m/Y"}}</td>
+                        </tr>
+                        <tr> 
+                            <td>Observación:</td>
+                            <td colspan="3">{{encabezado.observacion}}</td>
+                        </tr>
+                    </tbody>  
+                </table>
+            </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>SubTotal</th>
+                        <th>Iva</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in detalle %}
+                    <tr>
+                        <td span class="small">{{item.servicios.Descripcion_Servicio}}</td>
+                        <td class="numero">{{item.cantidad}}</td>
+                        <td class="numero">{{item.precio_prv}}</td>
+                        <td class="numero">{{item.sub_total}}</td>
+                        <td>{{ item.iva}}</td>
+                        <td>{{ item.total_compra}}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><h4>Subtotal</h4></td>
+                        <td class="numero"><h4>{{encabezado.sub_total}}</h4></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><h4>Iva</h4></td>
+                        <td class="numero"><h4>{{encabezado.iva}}</h4></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><h4>Total</h4></td>
+                        <td class="numero"><h4>{{encabezado.total_compra}}</h4></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

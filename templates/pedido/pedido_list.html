@@ -32,13 +32,15 @@
             <td>{{ item.total_compra}}</td>
             <td>{{ item.estado_pedido|yesno:"Activo, Inactivo"}}</td>
             <td>
-                
                 <a  href="{%url 'pedido_editar' item.id %}"
                 {% comment %} <a  href="#" {% endcomment %}
-                role="button"><i class="fa fa-edit" style="font-size: 20px; color: #FF7631"></i></a>
+                role="button"><i class="fa fa-edit" style="font-size: 20px; color: #FF7631"></i>
+                </a>
                 {% comment %} <a href="#"
                 role="button"><i class="fas fa-power-off" style="font-size: 20px; color:red"></i></a> {% endcomment %}
-
+                <a  href="{%url 'compras_print_one' item.id %}" target="reportes">
+                    <i class="fas fa-print" style="font-size: 20px; color: #FF7631"></i>
+                </a>
             </td>
         {% endfor%}
             {% else %}
