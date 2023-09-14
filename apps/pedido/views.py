@@ -42,7 +42,7 @@ def pedidos(request, compra_id=None):
                 'cliente':ped.cliente,
                 'observacion':ped.observacion,
                 'sub_total': ped.sub_total,
-                'iva': ped.iva,
+                'descuento': ped.descuento,
                 'total_compra': ped.total_compra
             }
             form_pedido=PedidoForm(e)
@@ -56,7 +56,7 @@ def pedidos(request, compra_id=None):
         cliente=request.POST.get("cliente")
         observacion=request.POST.get("observacion")
         sub_total=0
-        iva=0
+        descuento=0
         total_compra=0
 
         if not compra_id:
@@ -85,7 +85,7 @@ def pedidos(request, compra_id=None):
         cantidad=request.POST.get("id_cantidad_compras")
         precio=request.POST.get("id_precio_compras")
         sub_total_compras=request.POST.get("id_sub_total_compras")
-        iva_compras=request.POST.get("id_iva_compras")
+        descuento_compras=request.POST.get("id_descuento_compras")
         total_compra_compras=request.POST.get("id_total_compra_compras")
 
         servicios_list=servicios.objects.get(pk=servicio)
@@ -95,14 +95,14 @@ def pedidos(request, compra_id=None):
             servicios=servicios_list,
             cantidad=cantidad,
             precio_prv=precio,
-            iva=iva_compras,
+            descuento=descuento_compras,
         )
         if det:
             det.save()
             sub_total=Compras.objects.filter(compra=compra_id).aggregate(Sum('sub_total'))
-            iva=Compras.objects.filter(compra=compra_id).aggregate(Sum('iva'))
+            descuento=Compras.objects.filter(compra=compra_id).aggregate(Sum('descuento'))
             ped.sub_total=sub_total["sub_total__sum"]
-            ped.iva=iva["iva__sum"]
+            ped.descuento=descuento["descuento__sum"]
             ped.save()
 
         return redirect("pedido_editar", compra_id=compra_id)

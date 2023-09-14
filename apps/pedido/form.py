@@ -10,7 +10,7 @@ class PedidoForm(forms.ModelForm):
             'fecha_factura',
             'observacion',
             'sub_total',
-            'iva',
+            'descuento',
             'total_compra',
             'estado_pedido',
         ]
@@ -25,8 +25,8 @@ class PedidoForm(forms.ModelForm):
         # Hacer que el campo fecha_factura sea de solo lectura
         self.fields['fecha_factura'].widget.attrs['readonly'] = True
 
-        # Hacer que los campos sub_total, iva y total_compra sean de solo lectura
+        # Hacer que los campos sub_total, descuento y total_compra sean de solo lectura
         self.fields['sub_total'].widget.attrs['readonly'] = True
-        self.fields['iva'].widget.attrs['readonly'] = True
+        self.fields['descuento'].widget.attrs['readonly'] = True
         self.fields['total_compra'].widget.attrs['readonly'] = True
 
