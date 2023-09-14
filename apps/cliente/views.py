@@ -61,6 +61,6 @@ def ClienteInactivar(request, id):
         prv.estado=False
         prv.save()
         contexto={'obj': 'OK'}
-        return HttpResponse("Cliente Inactivado")
+        # return HttpResponse("Cliente Inactivado")
 
     return render(request, template_name, contexto)
