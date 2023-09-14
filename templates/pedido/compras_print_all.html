@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de compras</title>
+</head>
+    <style type="text/css">
+        @page{
+            size: letter;
+            margin: 1cm;
+        }
+        .table{
+            width: 100%;
+            max-width: 100%;
+            background-color: aqua;
+            margin-bottom: 5px;
+            font-size: 100%;
+            font-family: 'Roboto', 'san-serif';
+        }
+        .table th
+        .table td{
+            padding: 5px;
+            vertical-align: top;
+            border-top:1px solid #ffffff ;
+        }
+        .table thead th{
+            vertical-align: bottom;
+            border-bottom: 2px solid #000;
+        }
+        .table tbody + body{
+            border-top: 2px soli #000;
+        }
+        .table .table{
+            background-color: #000;
+        }
+        .table td .numero{
+            background-color: aqua;
+        }
+    </style>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4>Sistema de Compras</h4>
+                <!-- <h3>Reporte de compras al {{today|date:"d/m/Y"}}</h3> -->
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No. Compra</th>
+                        <th>Proveedor</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in obj %}
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.Proveedor}}</td>
+                        <td>{{item.Fecha_compra|date:"d/m/Y"}}</td>
+                        <td>{{item.Total}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

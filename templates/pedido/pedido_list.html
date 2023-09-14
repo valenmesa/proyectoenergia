@@ -4,7 +4,8 @@
 
 <h1>Listado de Compras</h1>
 
-    <a class="btn"  href="{% url 'pedido_crear' %}"><i class="fa fa-plus-square"  style="font-size: 30px; color: #00590F "></i></a>
+    <a class="btn"  href="{% url 'pedido_crear' %}"><i class="fa fa-plus-square" class="far fa-calendar-plus" style="font-size: 30px; color: #00590F "></i></a>
+    <a class="btn"  href="{% url 'pedido_print_all' %}"><i class="fa fa-plus-square" class="far fa-print" style="font-size: 30px; color: #00590F "></i></a>
 </div>
 <table class="table table-striped">
     <thead>
@@ -33,7 +34,7 @@
             <td>{{ item.total_compra}}</td>
             <td>{{ item.estado_pedido|yesno:"Activo, Inactivo"}}</td>
             <td>
-
+                
                 <a  href="{%url 'pedido_editar' item.id %}"
                 {% comment %} <a  href="#" {% endcomment %}
                 role="button"><i class="fa fa-edit" style="font-size: 20px; color: #FF7631"></i></a>
