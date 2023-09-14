@@ -2,10 +2,11 @@ from django.db import models
 from apps.cliente.models import Cliente
 from apps.estado.models import Estado
 from apps.servicios.models import servicios
+from datetime import date
 
 # Create your models here.
 class Pedido(models.Model):
-    fecha_factura=models.DateField(null=True, blank=True)
+    fecha_factura=models.DateField(default=date.today)
     observacion=models.TextField(blank=True, null=True)
     sub_total=models.FloatField(default=0)
     descuento=models.FloatField(default=0)
@@ -20,6 +21,7 @@ class Pedido(models.Model):
         self.observacion=self.observacion.lower()
         self.total_compra= self.sub_total - ((float(self.sub_total)*(float(self.descuento)))/100)
         super(Pedido, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name_plural = "Pedidos"
         verbose_name="Pedido"
