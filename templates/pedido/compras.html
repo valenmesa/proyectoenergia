@@ -223,9 +223,9 @@
               <td>{{ item.descuento}}</td>
               <td>{{ item.total_compra}}</td>
               <td>
-                <button class="btn btn-danger btn-circle"
+                <button class="btn "
                 onclick="return abrir_modal('{%url 'compras_del' pedido.pk item.id%}')">
-                 <i class="fas fa-trash-alt"></i>
+                 <i class="fas fa-trash-alt" style="font-size: 20px; color: red"></i>
                </button>
               </td>
             </tr>
